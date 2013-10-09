@@ -1,0 +1,9 @@
+<li>
+  <span class="content"><h5>"<%= comment.content %>"</h5></span>
+</br>
+  <%= comment.user.name %>
+</br>
+  <span class="timestamp">
+  	Posted on <%= comment.created_at.strftime("%b/%e/%y") %>.
+  </span>
+</li>

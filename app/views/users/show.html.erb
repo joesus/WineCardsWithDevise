@@ -1,0 +1,16 @@
+<!-- accessible from controller by simply directing to @user -->
+<% provide(:title, @user.name) %>
+<h1 id="name">
+	  <%= gravatar_for @user, size: 52 %>
+		<%= @user.name %>
+</h1>
+
+<div class="span8">
+	<% if @user.comments.any? %>
+	<h3>Comments</h3>
+	<ol class="comments">
+		<%= render @comments %>
+	</ol>
+	<%= will_paginate @comments %>
+	<% end %>
+</div>

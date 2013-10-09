@@ -1,0 +1,30 @@
+<% provide(:title, "Sign Up") %>
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<h1 id="FormTitle">Sign Up</h1>
+		<%= form_for(@user) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+<!-- We use a shared partial where we define the error messages 
+		 and how we want them to be formatted. -->
+
+<!-- Rails knows that @user is for the User model, also infers that the action of the form should be to POST to the URL/users and since the controller knows that /users is for create a user... -->
+
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+
+<!-- Using password_field hides the input from view -->
+
+			<%= f.label :password_confirmation %>
+			<%= f.password_field :password_confirmation %>
+
+			<%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,54 @@
+<% provide(:title, "Add a Wine") %>
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<h1>Add a Wine</h1>
+
+		<%= form_for(@wine) do |f| %>
+
+		<%= render 'shared/error_messages', object: f.object %>
+
+			
+				
+			<%= f.label :category %>
+			<%= f.select :category, ['Champagne and Sparkling Wine',
+															 'Burgundy, White', 'Burgundy, Red', 
+															 'Bordeaux, Red', 'Proprietary Blends',
+															 'Spain', 'Pinot Noir', 'Cabernet Sauvignon',
+															 'Zinfandel', 'Merlot', 'Syrah', 'Rhone',
+															 'Loire', 'Chardonnay', 'Sauvignon Blanc', 
+															 'Interesting Whites', 'Interesting Reds',
+															 'Italy, White', 'Italy, Red',
+															 'Australia/New Zealand, Whites',
+															 'Australia/New Zealand, Reds', 'Chile / Argentina',
+															 'Half Bottles, Champagne and Sparkling',
+															 'Half Bottles, White', 'Half Bottles, Red'] %>
+			
+			<%= f.label :producer %>
+			<%= f.text_field :producer %>
+
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+
+			<%= f.label :varietal %>
+			<%= f.text_field :varietal %>
+
+			<%= f.label :place %>
+			<%= f.text_field :place %>
+
+			<%= f.label :country %>
+			<%= f.text_field :country %>
+
+			<%= f.label :vintage %>
+			<%= f.text_field :vintage %>
+
+			<%= f.label :description %>
+			<%= f.text_area :description, placeholder: "Add a description" %>
+
+			<%= f.label :price %>
+			<%= f.text_field :price %>
+
+			<%= f.submit "Add Wine", class: "btn btn-large btn-primary" %>
+
+			<% end %>
+	</div>
+</div>

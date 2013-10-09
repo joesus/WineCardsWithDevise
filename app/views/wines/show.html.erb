@@ -1,0 +1,65 @@
+<% provide(:title, @wine.name) %>
+<div class="panel panel-default">  
+	<div class="panel-heading">
+		<h1><%= wine_name %></h1>
+	 </div>
+	  <div class="panel-body">
+	  	<table class="table table-hover table-responsive">
+	  		<tbody>
+	  			<tr>
+	  				<td>Varietal</td>
+	  				<td><%= @wine.varietal %></td>
+	  			</tr>
+	  			<tr>
+	  				<td>Producer</td>
+	  				<td><%= @wine.producer %></td>
+	  			</tr>
+	  			<tr>
+	  				<td>Place</td>
+	  				<td><%= @wine.place %></td>
+	  			</tr>
+	  			<tr>
+	  				<td>Country</td>
+	  				<td><%= @wine.country %></td>
+	  			</tr>
+	  			<tr>
+	  				<td>Vintage</td>
+	  				<td><%= @wine.vintage %></td>
+	  			</tr>
+	  			<tr>
+	  				<td colspan="2">Description</td>
+	  			</tr>
+	  			<tr>
+	  				<td colspan="2" class="description"><%= @wine.description %></td>
+	  			</tr>
+	  			<tr>
+	  				<td colspan="2">Tasting Notes</td>
+	  			</tr>
+					<% @wine.comments.each do |comment| %>
+					<tr>
+						<td colspan="2" class="description">
+	  					"<%= comment.content %>"
+	  					<br>
+	  					Posted by - <%= comment.user.name %> on <%= comment.created_at.strftime("%b/%e/%y") %>.
+	  				</td>
+	  			</tr>
+	  			<% end %>
+	  			<tr>
+	  				<td colspan="2">
+							<%= render 'shared/comment_form' %>
+	  				</td>
+	  			</tr>
+	  		</tbody>
+	  	</table>
+ 		</div>
+ 	</div>
+</div>
+
+
+
+
+
+
+
+
+

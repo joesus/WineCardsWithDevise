@@ -1,0 +1,43 @@
+<% provide(:title, "All Wines") %>
+
+<div class="panel panel-default">
+	<div class="panel-heading"><h1><%= link_to 'All Wines', wines_path %></h1>
+		<div class="panel-body">
+			<% if current_user.admin? %>
+				<button type="button" class="btn btn-primary" id="WineButton"><%= link_to 'Add a Wine', new_wine_path %></button>
+			<% end %>				
+			<h4>Find a Wine</h4>
+				<div class="row">
+					<div class="col-md-5">
+
+						<%= search_form_for @search do |f| %>
+						<%= f.label :name_or_place_or_producer_or_description_or_varietal_cont, "Search Wines"  %>
+						<%= f.text_field :name_or_place_or_producer_or_description_or_varietal_cont %>
+						<%= f.label :search_by_vintage %>
+						<%= f.text_field :vintage_eq %>
+
+						<%= f.submit %>
+				<% end %>
+				</div>
+			</div>
+				<%= will_paginate %>
+
+		<div class="table-hover table-responsive">
+			<table class="table">
+				<thead>
+    			<th><%= sort_link @search, :name, {}, :method => action_name == 'advanced_search' ? :post : :get %></th>
+     			<th><%= sort_link @search, :price, {}, :method => action_name == 'advanced_search' ? :post : :get %></th>
+	    		<th><%= sort_link @search, :country, {}, :method => action_name == 'advanced_search' ? :post : :get %></th>
+  	  		<th><%= sort_link @search, :vintage, {}, :method => action_name == 'advanced_search' ? :post : :get %></th>
+  			</thead>
+  			<tbody>
+					<%= render @wines %>
+				</tbody>
+			</table> 
+		</div> <!-- table responsive -->
+
+				<%= will_paginate %>	
+	
+		</div> <!-- panel body -->
+	</div> <!-- panel heading -->
+</div> <!-- panel -->

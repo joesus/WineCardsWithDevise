@@ -1,0 +1,24 @@
+<tr>
+  <td>
+    <% if wine.name.empty? %>
+      <%= link_to wine.producer, wine %>, <%= wine.varietal %>
+    <% else %>
+    	<%= link_to wine.producer, wine %>, <%= wine.name %>
+    <% end %>
+  </td>
+  <td>
+    $<%= wine.price %>
+  </td>
+  <td>
+    <%= wine.country %>
+  </td>
+  <td>
+  	<%= wine.vintage %>
+  </td>
+<% if current_user.admin? %>
+	<td> | <%= link_to 'edit', edit_wine_path(wine) %>
+       | <%= link_to 'delete', wine, method: :delete,
+																data: { confirm: "You sure?"} %>
+	</td>
+<% end %>															
+</tr>
